@@ -2,7 +2,13 @@
 
 from BeautifulSoup import BeautifulSoup
 import json 
-import os
+
+def find_child(children, sub):
+    candidate = None
+    elems = filter(lambda x: x['sub_key'] == sub, children)
+    if len(elems):
+        candidate = elems[0]
+    return candidate 
 
 def get_parent_key(key):
     splitted   = key.split('.')
@@ -21,7 +27,7 @@ def find_node(root={}, prop_key=None):
         if parent_node == None:
             parent_node = root
 
-        node = parent_node['children'].get(sub_key, None)
+        node = find_child(parent_node['children'], sub_key)
 
         if node == None and int(sub_key) == 0:
             prop_key    = ".".join(partial_key)
@@ -31,23 +37,29 @@ def find_node(root={}, prop_key=None):
         # if we will have a next loop then we save this node as parent
         if node:
             parent_node = node
+
+    if node == None: 
+        import pdb; pdb.set_trace()
     return node
 
 def create_node(full_key=None, empty=False, sub_key=0, parent=None, proposition={}):
     node = {
+        'sub_key': sub_key,
         'key': full_key,
         'empty': empty,
-        'children': {},
+        'children': [],
         'content': {}
     }
     if empty == False:
         node['content'].update(proposition)
 
-    parent['children'][sub_key] = node
+    existing_node = find_child(parent['children'], sub_key)
+    if existing_node == None:
+        parent['children'].append(node)
     return node
 
 def create_nodes(propositions=[]):
-    root_node = { 'key':'0', 'children': {} }
+    root_node = { 'key':'0', 'children': [] }
 
     for (key, prop) in sorted(propositions.items()):
         splitted_key = key.split('.')
@@ -58,7 +70,10 @@ def create_nodes(propositions=[]):
         else:
             sub_key     = splitted_key[0]
             parent_node = root_node
-            
+        
+        if parent_node == None:
+            import pdb; pdb.set_trace()
+
         create_node(parent=parent_node, full_key=key, sub_key=sub_key, 
                     proposition=prop)
 
@@ -134,5 +149,5 @@ propositions = extract_propositions(soup.body)
 root         = create_nodes(propositions)
 
 json_content = json.dumps(root, indent=4, sort_keys=True)
-f = open('data/tractatus.json', 'w+')
+f = open('assets/data/tractatus.json', 'w+')
 f.write(json_content)
