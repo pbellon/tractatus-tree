@@ -20,11 +20,22 @@ module.exports = function(grunt) {
         src: ['*.css', '*.html', 'images/**/*', 'img/**/*', '!Gruntfile.js'],
         dest: 'dist/',
       },
+      bowerDependencies: {
+        src: [ 'components/**/*' ],
+        dest: 'dist/'
+      },
+      data: {
+        src: 'assets/data/*.json',
+        dest: 'dist/data/',
+        flatten: true,
+        expand: true,
+        filter: 'isFile'
+      }
     },
 
     browserify: {
       all: {
-        src: 'app.js',
+        src: [ 'src/app.js', 'src/TractatusGraph.js' ],
         dest: 'dist/app.js'
       },
       options: {
@@ -57,7 +68,7 @@ module.exports = function(grunt) {
       },
 
       assets: {
-        files: ['assets/**/*', '*.css', '*.js', 'images/**/*', 'img/**/*', '!Gruntfile.js'],
+        files: ['assets/**/*', '*.json', '*.css', '*.js', 'images/**/*', 'img/**/*', '!Gruntfile.js'],
         tasks: ['copy'],
       }
     },
