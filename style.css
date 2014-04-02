@@ -1,0 +1,640 @@
+@font-face {
+    font-family: 'tgregular';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/texgyreschola-regular.otf") format("opentype");
+}
+@font-face {
+    font-family: 'tgitalic';
+    font-style: italic;
+    font-weight: normal;
+    src: url("fonts/texgyreschola-italic.otf") format("opentype");
+}
+@font-face {
+    font-family: 'tgbold';
+    font-style: normal;
+    font-weight: bold;
+    src: url("fonts/texgyreschola-bold.otf") format("opentype");
+}
+@font-face {
+    font-family: 'tgbolditalic';
+    font-style: italic;
+    font-weight: bold;
+    src: url("fonts/texgyreschola-bolditalic.otf") format("opentype");
+}
+@font-face {
+    font-family: 'DejaVu Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/DejaVuSans.ttf") format("truetype");
+}
+body {
+   text-align: justify;
+   line-height: 1.2;
+   font-family: 'tgregular';
+}
+svg {
+    font-family: 'tgregular';
+    background-color: transparent;
+}
+h1 {
+    text-align: center;
+    font-family: tgbold;
+}
+h4 {
+    font-family: tgbold;
+}
+.bylinebr
+{
+    font-family: tgbold;
+
+}
+i, em, var
+{
+    font-family: tgitalic;
+}
+b, strong
+{
+    font-family: tgbold;
+}
+th {
+    font-family: tgbold;
+}
+h1.germantitle {
+    font-family: tgbolditalic;
+    font-style: italic;
+}
+h3.pubinfo
+{
+    text-align: center;
+    font-family: tgbold;
+}
+h3.byline
+{
+    text-align: center;
+    font-family: tgbold;
+}
+span.symbol {
+    font-family: 'DejaVu Sans', 'Lucida Sans Unicode', sans-serif;    
+}
+.motto
+{
+    margin-top: 12ex;
+    margin-bottom: 15ex;
+    text-align: center;
+}
+.dedicationtext
+{
+    margin-top: 5ex;
+    text-align: center;
+    font-variant: small-caps;
+}
+em.germph
+{
+    letter-spacing: 0.2em;
+    padding-left: 0.2em;
+    font-style: normal;
+    font-weight: normal;
+}
+h2.majordivision#dedication
+{
+    text-align: center;
+    margin-top: 100px;
+    font-family: tgbold;
+}
+p
+{
+    text-indent: 2em;
+    margin-top: 0ex;
+    margin-bottom: 0ex;
+}
+p.openingpar
+{
+    text-indent: 0em;
+}
+table
+{
+    border-collapse: collapse;
+    border: none;
+    margin: 0px;
+    text-indent: 0em;
+}
+.textsc
+{
+    font-variant: small-caps;
+}
+.overlined
+{
+    text-decoration: overline;
+}
+.nop
+{
+    font-style: normal;
+}
+.quant
+{
+    padding-right: 0.2em;
+}
+span.mathrel
+{
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+sup span.mathrel
+{
+    padding-left: 0em;
+    padding-right: 0em;
+}
+table.fnlist
+{
+    border-collapse: collapse;
+    border: none;
+    vertical-align: top;
+    font-size: 70%;
+}
+td.righttight
+{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    text-align: right;
+    vertical-align: top;
+}
+td.centertight
+{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    text-align: center;
+    vertical-align: top;
+}
+td.lefttight
+{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    text-align: left;
+    vertical-align: top;
+}
+table.alignedmath tr td.righttight
+{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    text-align: right;
+    vertical-align: baseline;
+}
+table.alignedmath tr td.centertight
+{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    text-align: center;
+    vertical-align: baseline;
+}
+table.alignedmath
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-indent: 0pt;
+}
+table.alignedmath tr td.lefttight
+{
+    padding: 0px;
+    border: none;
+    margin: 0px;
+    text-align: left;
+    vertical-align: baseline;
+}
+.mathop
+{
+    padding-right: 0.15em;
+}
+span.mathrm
+{
+    font-style: normal;
+}
+span.mathrm var
+{
+    font-style: normal;
+}
+ul.desc
+{
+    list-style-type: none;
+}
+.brname
+{
+    font-variant: small-caps;
+    text-align: right;
+    padding-right: 1.5em;
+}
+.wname
+{
+    text-align: right;
+    padding-right: 1.5em;
+}
+.brdate
+{
+    text-align: left;
+    padding-left: 1.5em;
+}
+.prefacetable
+{
+    width: 100%;
+}
+.prefheadercell
+{
+   width: 33%;
+   padding: 10px;
+   font-weight: bold;
+   font-family: tgbold;
+}
+td.gerpref
+{
+   width: 33%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 1em;
+   vertical-align: top;
+   background-color: LightYellow;
+}
+td.ogdpref
+{
+   width: 33%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 1em;
+   vertical-align: top;
+   background-color: AliceBlue;
+}
+td.pmcpref
+{
+   width: 33%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 1em;
+   vertical-align: top;
+   background-color: MistyRose;
+}
+table.bodytable
+{
+   width: 100%;
+}
+th.numheader
+{
+    width: 7%;
+    padding: 10px;
+    font-weight: bold;
+    font-family: tgbold;
+}
+th.headercell
+{
+    width: 31%;
+    padding: 10px;
+    font-weight: bold;
+    font-family: tgbold;
+}
+td.pnum
+{
+   width: 5.5%;
+   padding-right: 10px;
+   text-indent: 0em;
+   text-align: right;
+   font-weight: bold;
+   vertical-align: top;
+   font-family: tgbold;
+}
+td.ger
+{
+   width: 31.5%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 1em;
+   vertical-align: top;
+   background-color: LightYellow;
+}
+td.ogd
+{
+   width: 31.5%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 1em;
+   vertical-align: top;
+   background-color: AliceBlue;
+}
+td.pmc
+{
+   width: 31.5%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 1em;
+   vertical-align: top;
+   background-color: MistyRose;
+}
+td.gernoindent
+{
+   width: 31.5%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 0em;
+   vertical-align: top;
+   background-color: LightYellow;
+}
+td.ogdnoindent
+{
+   width: 31.5%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 0em;
+   vertical-align: top;
+   background-color: AliceBlue;
+}
+td.pmcnoindent
+{
+   width: 31.5%;
+   padding-left: 10px;
+   padding-right: 10px;
+   text-indent: 0em;
+   vertical-align: top;
+   background-color: MistyRose;
+}
+div.centered
+{
+   text-align: center;
+   margin-top: 0px;
+   margin-bottom: 0px;
+}
+div.centeredsqueeze
+{
+   line-height: 0.7;
+   text-align: center;
+   margin-top: 0px;
+   margin-bottom: 0px;
+}
+div.centeredspacebelow
+{
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 1.5ex;
+}
+span.summation
+{
+    text-indent: 0px;
+    display: inline-block; 
+    text-align: center; 
+    vertical-align: middle; 
+    line-height: 1;
+}
+span.padrthree
+{
+    padding-right: 3em;
+}
+div.displaymath
+{
+    text-align: center;
+}
+span.smallvar
+{
+    font-size: 80%;
+}
+var.smallvar
+{
+    font-size: 80%;
+}
+var.pushvar
+{
+    padding-right: 0.15em;
+}
+var.doublepushvar
+{
+    padding-right: 0.15em;
+    padding-left: 0.15em;
+}
+span.largeop
+{
+    font-size: 200%;
+}
+span.largeparen
+{
+    font-size: 250%; 
+    vertical-align: middle;
+}
+span.binom
+{
+    text-indent: 0px;
+    display: inline-block; 
+    text-align: center; 
+    vertical-align: middle; 
+    line-height: 0.9;
+}
+table.truthtable
+{
+    border-collapse: collapse;
+    display:inline-block;
+    vertical-align: middle;
+}
+table.truthtable th.l
+{
+    border-bottom:3px double black;
+    border-right:1px solid black;
+    padding: 4px;
+    text-align: center;
+    font-weight: normal;
+}
+table.truthtable th.m
+{
+    border-bottom:3px double black;
+    border-right:1px solid black;
+    padding: 4px;
+    text-align: center;
+    font-weight: normal;
+}
+table.truthtable th.e
+{
+    border-bottom:3px double black;
+    border-right:none;
+    padding: 4px;
+    text-align: center;
+    font-weight: normal;
+}
+table.truthtable td.l
+{
+    border-bottom:1px solid black;
+    border-right:1px solid black;
+    padding: 4px;
+    text-align: center;
+}
+table.truthtable td.m
+{
+    border-bottom:1px solid black;
+    border-right:1px solid black;
+    padding: 4px;
+    text-align: center;
+}
+table.truthtable td.e
+{
+    border-bottom:1px solid black;
+    border-right:none;
+    padding: 4px;
+    text-align: center;
+}
+p.footnote
+{
+    text-indent: 0px;
+    margin-top: 1ex;
+    clear: both;
+}
+span.kckaddition
+{
+    color: red;
+}
+p.indexentry
+{
+    padding-left: 3em;
+    text-indent: -3em;
+}
+p.indexsubentry
+{
+    padding-left: 4.5em;
+    text-indent: -3em;
+}
+p.indexsubsubentry
+{
+    padding-left: 6em;
+    text-indent: -3em;
+}
+div.russellsintro
+{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+div.indexdiv
+{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+span.latex 
+{
+  letter-spacing: 1px;
+}
+span.latex sup 
+{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85em;
+  vertical-align: 0.2em;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+span.latex sub 
+{
+  text-transform: uppercase;
+  vertical-align: -0.4ex;
+  margin-left: -0.1667em;
+  margin-right: -0.125em;
+  font-size: 1em;
+}
+object
+{
+    background-color: transparent;
+}
+span.sflabel
+{
+    vertical-align: middle; 
+    font-family: 'DejaVu Sans', 'Lucida Sans Unicode', sans-serif;
+}
+.ccicon
+{
+    width: 64px; 
+    height: 64px;
+}
+span.ccicongroup
+{
+    float: left; 
+    padding-right: 1em;
+    vertical-align: middle;
+}
+object.thecubesvg
+{
+    width: 110pt; 
+    height: 115pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+img.thecubepng
+{
+    width: 101pt; 
+    height: 108pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+span.sfmiddle
+{
+    vertical-align: middle; 
+    font-family: 'DejaVu Sans', 'Lucida Sans Unicode', sans-serif;
+}
+object.theeyesvg
+{
+    vertical-align: middle; 
+    width: 101pt; 
+    height: 58pt;
+}
+img.theeyepng
+{
+    vertical-align: middle;
+}
+span.lowered
+{
+    vertical-align: -0.5ex;
+}
+span.nudgedown
+{
+    vertical-align: -0.2ex;
+}
+div.flushright
+{
+    text-align: right; 
+    padding-right: 1em;
+}
+table.possibilities
+{
+    display: inline-table; 
+    vertical-align: middle;
+    border-collapse: collapse;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;
+}
+td.middleright
+{
+    vertical-align: middle; 
+    text-align: right;
+}
+td.middlecenter
+{
+    vertical-align: middle; 
+    text-align: center;
+}
+td.middleleft
+{
+    vertical-align: middle; 
+    text-align: left;
+}
+td.summationtop
+{
+    text-align: center; 
+    vertical-align: bottom; 
+    padding-bottom: 0px;
+}
+td.summationmiddle
+{
+    text-align: center; 
+    padding-top: 0px; 
+    padding-bottom: 0px;
+}
+td.summationbottom
+{
+    text-align: center; 
+    padding-top: 0px;
+}
