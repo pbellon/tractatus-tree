@@ -129,8 +129,7 @@ def extract_propositions(page):
 
     return propositions
 
-# here we parse 
-soup         = BeautifulSoup(open('data/html_export/tractatus.html'))
+soup         = BeautifulSoup(open('html_export/tractatus.html'))
 propositions = extract_propositions(soup.body)
 root         = create_nodes(propositions)
 
