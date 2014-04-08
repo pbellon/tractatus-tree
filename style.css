@@ -638,3 +638,9 @@ td.summationbottom
     text-align: center; 
     padding-top: 0px;
 }
+
+.link { 
+  fill: none;
+  stroke: #ccf;
+  stroke-width: 2px;
+}
