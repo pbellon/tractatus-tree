@@ -1,6 +1,5 @@
 angular.module('tractatus-tree').directive('tractatusGraph', [
     function(scope, element, attr){
-        console.log('init');
         var directive = {
             restrict: "A",
             template: "<div><svg></svg></div>",
@@ -22,22 +21,32 @@ angular.module('tractatus-tree').directive('tractatusGraph', [
                     return height;
                 };
 
-                var collapse = function(d){
+                var collapseNode = function(d){
                     if (d.children) {
                         d._children = d.children;
-                        d._children.forEach(collapse);
+                        d._children.forEach(collapseNode);
                         d.children = null;
                     }
+                };
+
+                var nodeHasChildren = function(d){
+                    children = d.children || d._children;
+                    children = children || [];
+                    return children.length > 0;
+                };
+
+                var getNodeColor = function(d){
+                    return nodeHasChildren(d) ? "green" : "red";
                 };
 
                 // Toggle children on click.
                 var onNodeClicked = function(d) {
                     if (d.children) {
                         d._children = d.children;
-                        d.children = null;
+                        d.children = undefined;
                     } else {
                         d.children = d._children;
-                        d._children = null;
+                        d._children = undefined;
                     }
                     update(d);
                 };
@@ -56,7 +65,7 @@ angular.module('tractatus-tree').directive('tractatusGraph', [
                     root = jsonRoot;
                     root.x0 = height / 2;
                     root.y0 = 0;
-                    root.children.forEach(collapse);
+                    root.children.forEach(collapseNode);
                     update(root);
                 });
 
@@ -80,12 +89,12 @@ angular.module('tractatus-tree').directive('tractatusGraph', [
 
                     nodeEnter.append("circle")
                         .attr("r", 1e-6)
-                        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+                        .style("fill", getNodeColor);
 
                     nodeEnter.append("text")
-                        .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
+                        .attr("x", function(d) { return nodeHasChildren(d) ? -10 : 10; })
                         .attr("dy", ".35em")
-                        .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+                        .attr("text-anchor", function(d) { return nodeHasChildren(d) ? "end" : "start"; })
                         .text(function(d) { return d.key; })
                         .style("fill-opacity", 1e-6);
 
@@ -96,7 +105,7 @@ angular.module('tractatus-tree').directive('tractatusGraph', [
 
                     nodeUpdate.select("circle")
                         .attr("r", 4.5)
-                        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+                        .style("fill", getNodeColor);
 
                     nodeUpdate.select("text")
                         .style("fill-opacity", 1);
