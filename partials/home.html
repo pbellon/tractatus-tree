@@ -1,17 +1,20 @@
 <div class="container" ng-init="vis=false">
-    <h1 id="title">Tractatus Tree</h1>
-    <p class="lead">
-      This project is a personnal experimentation of how we can use a data-driven tools like <a href="https://github.com/mbostock/d3">D3.js</a> to abord a Philosophy piece like the Tractatus logico-philosophicus (<em>Logisch-Philosophische Abhandlung</em> in its original name).
-    </p>
-    <p class="lead">
-      This book published in 1921 was written by Ludwig Wittgenstein. Its numbered propositions follows a tree structure,
-      (<em>1</em>, then <em>1.1</em>, <em>1.2</em> etc.) which made me think we could easily visualize it. 
-      Please note that this project is not an attempt to explain nor justify the book, I prefer to let you do that.<br/>
-    </p>
-    <div class="text-center" ng-hide="vis==true">
-      <a class="btn btn-primary" ng-click="vis=true">Visualize the book</a>
+    <h1 id="title">
+      Tractatus Tree <a target="_blank" href="https://github.com/"><i class="fa fa-github"></i></a>
+    </h1>
+    <div class="intro" ng-hide="vis">
+      <p class="lead">
+        This project is a personnal experimentation of how we can use a data-driven tools like <a href="https://github.com/mbostock/d3">D3.js</a> to abord a Philosophy piece like the Tractatus logico-philosophicus (<em>Logisch-Philosophische Abhandlung</em> in its original name).
+      </p>
+      <p class="lead">
+        This book published in 1921 was written by Ludwig Wittgenstein. Its numbered propositions follows a tree structure,
+        (<em>1</em>, then <em>1.1</em>, <em>1.2</em> etc.) which made me think we could easily visualize it. 
+        Please note that this project is not an attempt to explain nor justify the book, I prefer to let you do that.<br/>
+      </p>
+      <div class="text-center">
+        <a class="btn btn-primary" ng-click="vis=true">Visualize the book</a>
+      </div>
     </div>
-
     <div ng-show="vis">
       <div tractatus-graph></div>
       <div class='reader' ng-if="selectedNode != undefined">
