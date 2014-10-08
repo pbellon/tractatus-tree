@@ -77,7 +77,6 @@ def create_nodes(propositions=[]):
         create_node(parent=parent_node, full_key=key, sub_key=sub_key, 
                     proposition=prop)
 
-    # print "Create node {nb} with parent: {parent}".format(parent=parent_node['key'], nb=key)
     return root_node 
 
 
