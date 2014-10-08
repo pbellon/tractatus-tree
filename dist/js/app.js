@@ -5344,9 +5344,6 @@
             return opened;
           };
           toggleOpen = function(node) {
-            if (node.key !== "0") {
-              return;
-            }
             if (nodeIsOpen(node)) {
               node.opened = false;
               collapseNode(node);

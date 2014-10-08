@@ -54,7 +54,6 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
             opened
 
         toggleOpen = (node)->
-            return if node.key != "0" 
             if nodeIsOpen(node)
                 node.opened = false
                 collapseNode(node)
