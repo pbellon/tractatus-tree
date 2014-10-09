@@ -1,10 +1,22 @@
-## Tractatus' tree
+### Tractatus' tree
 
-### What ?
-The Tractatus Logico-Philosophicus is a major writing for the phisophy of the 20th. This project purpose is to offer an innovative way to read and explore this book. 
-> This project does not have the ambition to propose any explanation the Tractatus, refer to other writing for such thing.
+This project is a personnal experimentation of how we can use a data-driven tools like [D3.js][d3] to explore a Philosophy piece like the Tractatus logico-philosophicus (*Logisch-Philosophische Abhandlung* in its original name).
+
+This book published in 1921 was written by Ludwig Wittgenstein. Its numbered propositions follows a tree structure,(*1*, then *1.1*, *1.2* etc.) which made me think we could easily visualize it. 
+Please note that this project is not an attempt to explain nor justify the book, I prefer to let you do that.
+
+### How 
+The tree visualization is heavily inspired (understand "built on") on the [Collapsible Tree block][block] created by Mike Bostock using its visualization library [D3][d3]. I created a small [script][] to scrap an HTML version of the tractatus
 
 
-### Why ? 
-Wittengstein which is a great logician constructed its book with an arborescence structure. 
+### Thanks to these projects
+- [Scrapped website][http://people.umass.edu/phil335-klement-2/tlp/tlp.html]
+- [Yeoman][yeoman]
+- [GulpJS][gulp]
+- [D3.js][d3]
+- [block #/tree viz][block]
 
+[d3]: http://d3js.org/
+[block]: http://bl.ocks.org/mbostock/4339083
+[gulp]: http://gulpjs.com/
+[yeoman]: http://yeoman.io/
