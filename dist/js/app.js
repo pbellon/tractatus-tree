@@ -5284,17 +5284,18 @@
         template: "<div><svg></svg></div>",
         replace: true,
         link: function(scope, elem, attr) {
-          var collapseNode, colors, diagonal, duration, elemWidth, getHeight, getNodeColor, getTextColor, getWidth, height, i, init, margin, nodeHasChildren, nodeIsOpen, onNodeClicked, root, svg, toggleOpen, tree, update, width;
+          var activeNode, collapseNode, colors, diagonal, duration, elemWidth, getHeight, getNodeColor, getTextColor, getWidth, height, i, init, margin, nodeHasChildren, nodeIsActive, nodeIsOpen, onNodeClicked, root, setActive, svg, toggleOpen, tree, update, width;
+          activeNode = void 0;
           colors = {
-            opened: 'white',
-            closed: '#B3B3B3'
+            active: 'rgb(69, 69, 69)',
+            inactive: 'rgb(179, 179, 179)'
           };
           elemWidth = $(elem).outerWidth();
           margin = {
             top: 20,
             right: 10,
             bottom: 20,
-            left: 120
+            left: 300
           };
           width = elemWidth;
           height = 550;
@@ -5325,17 +5326,17 @@
             return has;
           };
           getNodeColor = function(node) {
-            if (nodeIsOpen(node)) {
-              return colors.opened;
+            if (nodeIsActive(node.key)) {
+              return colors.active;
             } else {
-              return colors.closed;
+              return colors.inactive;
             }
           };
           getTextColor = function(node) {
-            if (nodeIsOpen(node)) {
-              return colors.closed;
+            if (nodeIsActive(node.key)) {
+              return 'white';
             } else {
-              return colors.opened;
+              return colors.active;
             }
           };
           nodeIsOpen = function(node) {
@@ -5343,7 +5344,21 @@
             opened = !!node.opened;
             return opened;
           };
+          nodeIsActive = function(node_key) {
+            var is_active;
+            is_active = activeNode && activeNode === node_key;
+            return is_active;
+          };
+          setActive = function(node_key) {
+            activeNode = node_key;
+            return activeNode;
+          };
           toggleOpen = function(node) {
+            if (nodeIsActive(node.key)) {
+              setActive(void 0);
+            } else {
+              setActive(node.key);
+            }
             if (nodeIsOpen(node)) {
               node.opened = false;
               collapseNode(node);
@@ -5364,7 +5379,7 @@
             root = TREE;
             root.opened = true;
             root.x0 = height / 2;
-            root.y0 = 0;
+            root.y0 = margin.left;
             root.children.forEach(collapseNode);
             return update(root);
           };
@@ -5378,13 +5393,7 @@
             node = svg.selectAll("g.node").data(nodes, function(node) {
               return node.id || (node.id = ++i);
             });
-            nodeEnter = node.enter().append("g").attr("class", function(node) {
-              if (!!node.opened) {
-                return 'node opened';
-              } else {
-                return 'node closed';
-              }
-            }).attr("transform", function(node) {
+            nodeEnter = node.enter().append("g").attr("class", 'node').attr("transform", function(node) {
               return "translate(" + source.y0 + "," + source.x0 + ")";
             }).on("click", onNodeClicked);
             nodeEnter.append("rect").attr("width", 60).attr("height", 20).attr("rx", 5).attr("ry", 5).attr("y", -10).style("stroke", "#000000").style("stroke-width", 1);
