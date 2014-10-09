@@ -10,6 +10,7 @@
   min-width: 300px;
   max-width: 500px;
   text-align: left;
+  margin: auto;
 }
 .reader .lang-value {
   cursor: pointer;
