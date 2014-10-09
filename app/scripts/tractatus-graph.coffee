@@ -3,9 +3,10 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
     template: "<div><svg></svg></div>",
     replace: true,
     link: (scope, elem, attr)->
+        activeNode = undefined
         colors =
-            opened: 'white',
-            closed: '#B3B3B3'
+            active: 'rgb(69, 69, 69)',
+            inactive: 'rgb(179, 179, 179)'
 
         elemWidth = $(elem).outerWidth()
 
@@ -13,7 +14,7 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
             top: 20
             right: 10
             bottom: 20
-            left: 120
+            left: 300
 
         width  = elemWidth
         height = 550
@@ -44,23 +45,36 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
             has
 
         getNodeColor = (node)->
-            if nodeIsOpen(node) then colors.opened else colors.closed
+            if nodeIsActive(node.key) then colors.active else colors.inactive
 
         getTextColor = (node)->
-            if nodeIsOpen(node) then colors.closed else colors.opened
+            if nodeIsActive(node.key) then 'white' else colors.active
 
         nodeIsOpen = (node)->
             opened = !!node.opened
             opened
 
+        nodeIsActive = (node_key)->
+            is_active = activeNode and activeNode == node_key
+            is_active 
+
+        setActive = (node_key)-> 
+            activeNode = node_key
+            activeNode
+
         toggleOpen = (node)->
+            if nodeIsActive(node.key)
+                setActive(undefined)
+            else 
+                setActive(node.key)
+
             if nodeIsOpen(node)
                 node.opened = false
                 collapseNode(node)
             else
                 node.opened = true
                 node.children = node._children
-                scope.$parent.$broadcast(EVENTS.node.selected, node)  
+                scope.$parent.$broadcast(EVENTS.node.selected, node)
 
             update(node)
 
@@ -79,7 +93,7 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
             root = TREE
             root.opened = true
             root.x0 = height / 2
-            root.y0 = 0
+            root.y0 = margin.left
             root.children.forEach(collapseNode)
             update(root)
         
@@ -101,7 +115,7 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
 
             # Enter any new nodes at the parent's previous position.
             nodeEnter = node.enter().append("g")
-                .attr("class", (node)-> if !!node.opened then 'node opened' else 'node closed')
+                .attr("class", 'node')
                 .attr("transform", (node)-> "translate(" + source.y0 + "," + source.x0 + ")")
                 .on("click", onNodeClicked)
 
