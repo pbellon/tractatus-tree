@@ -5354,10 +5354,10 @@
             return activeNode;
           };
           toggleOpen = function(node) {
-            if (nodeIsActive(node.key)) {
-              setActive(void 0);
-            } else {
-              setActive(node.key);
+            if (!nodeIsActive(node.key)) {
+              if (!nodeIsOpen(node)) {
+                setActive(node.key);
+              }
             }
             if (nodeIsOpen(node)) {
               node.opened = false;
@@ -5399,12 +5399,12 @@
             nodeEnter.append("rect").attr("width", 60).attr("height", 20).attr("rx", 5).attr("ry", 5).attr("y", -10).style("stroke", "#000000").style("stroke-width", 1);
             nodeEnter.append("text").attr("dy", ".35em").attr("x", 30).attr("text-anchor", "middle").text(function(node) {
               return node.key;
-            }).style("fill", getTextColor).style("fill-opacity", 1e-6);
+            }).style("fill", 'white').style("fill-opacity", 1e-6);
             nodeUpdate = node.transition().duration(duration).attr("transform", function(node) {
               return "translate(" + node.y + "," + node.x + ")";
             });
             nodeUpdate.select("rect").style("fill", getNodeColor);
-            nodeUpdate.select("text").style("fill", getTextColor).style("fill-opacity", 1);
+            nodeUpdate.select("text").style("fill", 'white').style("fill-opacity", 1);
             nodeExit = node.exit().transition().duration(duration).attr("transform", function(node) {
               return "translate(" + source.y + "," + source.x + ")";
             }).remove();
