@@ -63,10 +63,8 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
             activeNode
 
         toggleOpen = (node)->
-            if nodeIsActive(node.key)
-                setActive(undefined)
-            else 
-                setActive(node.key)
+            if not nodeIsActive(node.key)
+                setActive(node.key) unless nodeIsOpen(node)
 
             if nodeIsOpen(node)
                 node.opened = false
@@ -134,7 +132,7 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
                 .attr("x", 30)
                 .attr("text-anchor", "middle")
                 .text((node)-> node.key)
-                .style("fill", getTextColor)
+                .style("fill", 'white')
                 .style("fill-opacity", 1e-6)
 
             nodeUpdate = node.transition()
@@ -146,7 +144,7 @@ angular.module('tractatus-tree').directive('tractatusGraph', [ '$rootScope', 'co
                 
 
             nodeUpdate.select("text")
-                .style("fill", getTextColor)
+                .style("fill", 'white')
                 .style("fill-opacity", 1)
 
             # Transition exiting nodes to the parent's new position.
