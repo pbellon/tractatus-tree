@@ -20,3 +20,6 @@
 .lead {
   text-indent: 0;
 }
+.container {
+  max-width: 800px;
+}
