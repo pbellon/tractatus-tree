@@ -10,12 +10,13 @@ The tree visualization is heavily inspired (understand "built on") on the [Colla
 
 
 ### Thanks to these projects
-- [Scrapped website][http://people.umass.edu/phil335-klement-2/tlp/tlp.html]
+- [Scrapped website][edu]
 - [Yeoman][yeoman]
 - [GulpJS][gulp]
 - [D3.js][d3]
 - [block #/tree viz][block]
 
+[edu]:http://people.umass.edu/phil335-klement-2/tlp/tlp.html
 [d3]: http://d3js.org/
 [block]: http://bl.ocks.org/mbostock/4339083
 [gulp]: http://gulpjs.com/
