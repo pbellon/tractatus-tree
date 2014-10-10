@@ -26,17 +26,16 @@ tractatus.controller('MainCtrl', ['$scope', '$sce', 'constant.events', ($scope, 
         en: 'English'
         de: 'German'
 
+    $scope.selectedLanguage = 'en'
     $scope.selectedNode = undefined
 
     $scope.$on EVENTS.node.selected, (evt, node)->
-
-        node.selectedLanguage = node.selectedLanguage or 'de'
         $scope.safeApply ->
             $scope.selectedNode = node
             return
 
     $scope.selectLang = (lang)->
-        $scope.selectedNode.selectedLanguage = lang
+        $scope.selectedLanguage = lang
         return
 
     $scope.getLanguages = (lang)->
@@ -45,13 +44,13 @@ tractatus.controller('MainCtrl', ['$scope', '$sce', 'constant.events', ($scope, 
             value: languages[v]
 
     $scope.isSelectedLang = (lang)->
-        selected = $scope.selectedNode.selectedLanguage == lang
+        selected = $scope.selectedLanguage == lang
         selected
 
     $scope.getContent = ->
         node = $scope.selectedNode
         if node.content
-            return $sce.trustAsHtml(node.content[node.selectedLanguage])
+            return $sce.trustAsHtml(node.content[$scope.selectedLanguage])
         return
     return
 
