@@ -9,6 +9,12 @@ Please note that this project is not an attempt to explain nor justify the book,
 The tree visualization is heavily inspired (understand "built on") on the [Collapsible Tree block][block] created by Mike Bostock using its visualization library [D3][d3]. I created a small [script][] to scrap an HTML version of the tractatus and create a JSON structure with extracted propositions based on their number. 
 
 
+### Improvments to do
+- Improve the readin experience by adding propositions' content in tree's leafs
+- Add a search engine
+- Add the second english translation
+- Add a french translation
+
 ### Thanks to these projects
 - [Scrapped website][edu]
 - [Yeoman][yeoman]
