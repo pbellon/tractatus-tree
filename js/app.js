@@ -40,15 +40,15 @@
         en: 'English',
         de: 'German'
       };
+      $scope.selectedLanguage = 'en';
       $scope.selectedNode = void 0;
       $scope.$on(EVENTS.node.selected, function(evt, node) {
-        node.selectedLanguage = node.selectedLanguage || 'de';
         return $scope.safeApply(function() {
           $scope.selectedNode = node;
         });
       });
       $scope.selectLang = function(lang) {
-        $scope.selectedNode.selectedLanguage = lang;
+        $scope.selectedLanguage = lang;
       };
       $scope.getLanguages = function(lang) {
         return _.map(_.keys($scope.selectedNode.content), function(v) {
@@ -60,14 +60,14 @@
       };
       $scope.isSelectedLang = function(lang) {
         var selected;
-        selected = $scope.selectedNode.selectedLanguage === lang;
+        selected = $scope.selectedLanguage === lang;
         return selected;
       };
       $scope.getContent = function() {
         var node;
         node = $scope.selectedNode;
         if (node.content) {
-          return $sce.trustAsHtml(node.content[node.selectedLanguage]);
+          return $sce.trustAsHtml(node.content[$scope.selectedLanguage]);
         }
       };
     }
