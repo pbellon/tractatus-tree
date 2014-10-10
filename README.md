@@ -6,7 +6,7 @@ This book published in 1921 was written by Ludwig Wittgenstein. Its numbered pro
 Please note that this project is not an attempt to explain nor justify the book, I prefer to let you do that.
 
 ### How 
-The tree visualization is heavily inspired (understand "built on") on the [Collapsible Tree block][block] created by Mike Bostock using its visualization library [D3][d3]. I created a small [script][] to scrap an HTML version of the tractatus
+The tree visualization is heavily inspired (understand "built on") on the [Collapsible Tree block][block] created by Mike Bostock using its visualization library [D3][d3]. I created a small [script][] to scrap an HTML version of the tractatus and create a JSON structure with extracted propositions based on their number. 
 
 
 ### Thanks to these projects
