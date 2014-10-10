@@ -10,7 +10,7 @@ The tree visualization is heavily inspired (understand "built on") on the [Colla
 
 
 ### Improvments to do
-- Improve the readin experience by adding propositions' content in tree's leafs
+- Improve the reading experience by adding propositions' content in tree's leafs
 - Add a search engine
 - Add the second english translation
 - Add a french translation
