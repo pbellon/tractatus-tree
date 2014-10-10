@@ -21,3 +21,4 @@ The tree visualization is heavily inspired (understand "built on") on the [Colla
 [block]: http://bl.ocks.org/mbostock/4339083
 [gulp]: http://gulpjs.com/
 [yeoman]: http://yeoman.io/
+[script]: https://github.com/pbellon/tractatus-tree/blob/master/scripts/generate_json.py
